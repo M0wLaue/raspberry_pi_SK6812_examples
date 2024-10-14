@@ -5,8 +5,8 @@ import threading
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from rpi_ws281x import Adafruit_NeoPixel, ws
-from animations import run_rainbow_animation, run_blink_animation, clear_strip
-from menu import options_menu
+from animations import *
+from menu import *
 from utils import setup_logging, load_config, map_strip_type
 
 # Set up logging
@@ -43,28 +43,54 @@ executor = ThreadPoolExecutor(max_workers=1)
 animations = {
     "1": run_rainbow_animation,
     "2": run_blink_animation,
-    # Weitere Animationen können hier hinzugefügt werden
+    "3": run_fade_animation,
+    "4": run_color_wipe_animation,
+    "5": run_theater_chase_animation,
+    "6": run_pulse_animation,
+    "7": run_twinkle_animation,
+    "8": run_wave_animation,
+    "9": run_firework_animation,
+    "10": run_meteor_animation,
+    "11": run_larson_scanner_animation,
+    "12": run_comet_animation,
+    "13": run_bouncing_balls_animation,
+    "14": run_soft_white_pulse_animation,
+    "15": run_warm_white_fade_animation,
+    "16": run_rainbow_with_white_flash_animation,
+    "17": run_cool_white_twinkle_animation,
+    "18": run_white_comet_animation,
+    "19": run_aurora_borealis_animation,
+    "20": run_fireplace_animation,
+    "21": run_comet_rain_animation,
+    "22": run_lightning_storm_animation,
+    "23": run_pixel_explosion_animation,
+    "24": run_strobe_effect,
+    "25": run_holiday_twinkle_animation,
+    "26": run_lava_explosion_animation,
+    "29": run_random_sparkles_animation,
+    "30": run_random_meteor_shower_animation,
+    "32": run_random_white_strobes_animation,
+    "33": run_random_color_shifts_animation,
+    "34": run_random_walk_animation,
+    "35": run_random_glitter_animation,
 }
 
 def display_menu():
-    print("Select an option:")
-    print("1: Rainbow Animation")
-    print("2: Blink Animation")
-    print("3: Options")
+    print("Select an animation:")
+    for key in sorted(animations.keys()):
+        print(f"{key}: {animations[key].__name__.replace('_', ' ').title()}")
     print("0: Exit")
 
 def handle_user_choice(choice, animation_future):
-    # Stop any running animation before starting a new one
     if choice in animations:
         stop_event.set()
         if animation_future is not None:
             animation_future.result()  # Wait for the current animation to stop
 
-        # Clear the stop event and run the selected animation
         stop_event.clear()
         return executor.submit(animations[choice], strip, stop_event)
-    elif choice == "3":
-        options_menu(strip)
+    elif choice.lower() == "o":
+        options_menu(strip)  # Optionen-Menü aufrufen
     elif choice == "0":
         logger.info("Exiting program")
         return None
@@ -74,7 +100,6 @@ def handle_user_choice(choice, animation_future):
 
 def main():
     logger.info("Starting LED animation selection menu")
-
     animation_future = None
 
     try:
@@ -85,14 +110,13 @@ def main():
             if choice == "0":
                 break
     except KeyboardInterrupt:
-        logger.info("Program interrupted by user in menu")
+        logger.info("Program interrupted by user")
     finally:
-        # Ensure any running animation is stopped
         stop_event.set()
         if animation_future is not None:
             animation_future.result()
         clear_strip(strip)
-        executor.shutdown(wait=True)  # Wartet, bis alle Threads beendet sind
+        executor.shutdown(wait=True)
 
 if __name__ == "__main__":
     main()

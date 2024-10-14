@@ -3,7 +3,7 @@ count: 144
 pin: 18
 freq_hz: 800000
 dma: 10
-brightness: 255
+brightness: 5
 invert: false
 channel: 0
 strip_type: SK6812_STRIP_GRBW
