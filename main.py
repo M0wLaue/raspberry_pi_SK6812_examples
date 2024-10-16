@@ -4,10 +4,10 @@ import logging
 import threading
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
-from rpi_ws281x import Adafruit_NeoPixel, ws
+from rpi_ws281x import *
 from animations import *
-from menu import *
-from utils import setup_logging, load_config, map_strip_type
+from menu import options_menu, selected_audio_device
+from utils import *
 
 # Set up logging
 logger = setup_logging("SK6812Main")
@@ -73,6 +73,8 @@ animations = {
     "33": run_random_color_shifts_animation,
     "34": run_random_walk_animation,
     "35": run_random_glitter_animation,
+    # music sync
+    "50": run_music_synchronized_wave,
 }
 
 def display_menu():
@@ -88,7 +90,13 @@ def handle_user_choice(choice, animation_future):
             animation_future.result()  # Wait for the current animation to stop
 
         stop_event.clear()
-        return executor.submit(animations[choice], strip, stop_event)
+        if choice == "50":  # Musik-synchronisierte Animation
+            if selected_audio_device is None:
+                print("No audio device selected. Please choose an audio input device from the options menu.")
+                return animation_future
+            return executor.submit(animations[choice], strip, stop_event, selected_audio_device)
+        else:
+            return executor.submit(animations[choice], strip, stop_event)
     elif choice.lower() == "o":
         options_menu(strip)  # Optionen-Menü aufrufen
     elif choice == "0":

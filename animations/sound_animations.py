@@ -1,25 +1,26 @@
+# sound_animations.py
 import time
 import logging
-import math
-import random
 import numpy as np
 import pyaudio
-from .animation_utils import run_generic_animation, set_all_pixels_rgbw, clear_strip
+from .animation_utils import run_generic_animation
 from rpi_ws281x import Color
 from threading import Event
 
 logger = logging.getLogger("SK6812Animations")
 
-
-def run_music_synchronized_wave(strip, stop_event: Event, speed=50, chunk=1024, rate=44100):
+def run_music_synchronized_wave(strip, stop_event: Event, selected_audio_device, speed=50, chunk=1024, rate=44100):
     logger.info("Running music synchronized wave animation")
 
     # Setup PyAudio for capturing microphone input
     p = pyaudio.PyAudio()
+    input_device_index = selected_audio_device['index'] if selected_audio_device else None
+
     stream = p.open(format=pyaudio.paInt16,
                     channels=1,
                     rate=rate,
                     input=True,
+                    input_device_index=input_device_index,
                     frames_per_buffer=chunk)
 
     def update_function(strip):
