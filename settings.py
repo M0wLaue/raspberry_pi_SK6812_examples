@@ -3,6 +3,8 @@
 from dataclasses import dataclass
 import yaml
 from rpi_ws281x import Color, ws
+import os
+os.environ['PYTHONWARNINGS'] = 'ignore'
 
 @dataclass
 class AnimationSettings:
@@ -76,15 +78,19 @@ class SettingsManager:
         self.selected_audio_device = None
 
         # Lade die LED-Konfiguration
-        self.load_led_config()
+        self.load_config()
 
-    def load_led_config(self):
+    def load_config(self):
         # Load configuration from YAML file
         config_data = self._load_yaml(self.config_path)
 
         # Map string strip type to corresponding constant value
-        config_data["strip_type"] = map_strip_type(config_data["strip_type"], ws.WS2811_STRIP_GRB)
-        self.led_config = LEDConfig(**config_data)
+        strip_type = map_strip_type(config_data["led_config"]["strip_type"], ws.WS2811_STRIP_GRB)
+        config_data["led_config"]["strip_type"] = strip_type  # Sicherstellen, dass der strip_type korrekt gemappt wird
+        self.led_config = LEDConfig(**config_data["led_config"])
+
+        # Load default audio device index
+        self.selected_audio_device_index = config_data.get("audio_device_index", 0)
 
     @staticmethod
     def _load_yaml(path):

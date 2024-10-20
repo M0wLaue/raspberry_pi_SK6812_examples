@@ -4,6 +4,8 @@ from rpi_ws281x import Color
 import time
 import logging
 
+logger = logging.getLogger("GenericAnimation")
+
 class RGBColor:
     def __init__(self, r, g, b):
         self.r = r

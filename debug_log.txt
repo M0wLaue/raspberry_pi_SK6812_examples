@@ -1,0 +1,205 @@
+2024-10-20 22:12:32,354 - SK6812Main - INFO - Starting LED animation selection menu
+Select an animation:
+1: Run Rainbow Animation
+10: Run Meteor Animation
+11: Run Larson Scanner Animation
+12: Run Comet Animation
+13: Run Bouncing Balls Animation
+14: Run Soft White Pulse Animation
+15: Run Warm White Fade Animation
+16: Run Rainbow With White Flash Animation
+17: Run Cool White Twinkle Animation
+18: Run White Comet Animation
+19: Run Aurora Borealis Animation
+2: Run Blink Animation
+20: Run Fireplace Animation
+21: Run Comet Rain Animation
+22: Run Lightning Storm Animation
+23: Run Pixel Explosion Animation
+24: Run Strobe Effect
+25: Run Holiday Twinkle Animation
+26: Run Lava Explosion Animation
+29: Run Random Sparkles Animation
+3: Run Fade Animation
+30: Run Random Meteor Shower Animation
+32: Run Random White Strobes Animation
+33: Run Random Color Shifts Animation
+34: Run Random Walk Animation
+35: Run Random Glitter Animation
+4: Run Color Wipe Animation
+5: Run Theater Chase Animation
+50: Run Music Synchronized Wave
+6: Run Pulse Animation
+7: Run Twinkle Animation
+8: Run Wave Animation
+9: Run Firework Animation
+0: Exit
+Enter your choice: ALSA lib pcm_asym.c:105:(_snd_pcm_asym_open) capture slave is not defined
+ALSA lib confmisc.c:1369:(snd_func_refer) Unable to find definition 'cards.0.pcm.front.0:CARD=0'
+ALSA lib conf.c:5180:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5703:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM front
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib confmisc.c:1369:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5180:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5703:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1369:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5180:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5703:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1369:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround40.0:CARD=0'
+ALSA lib conf.c:5180:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5703:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM surround40
+ALSA lib confmisc.c:1369:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5180:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5703:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM surround41
+ALSA lib confmisc.c:1369:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5180:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5703:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM surround50
+ALSA lib confmisc.c:1369:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:5180:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5703:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM surround51
+ALSA lib confmisc.c:1369:(snd_func_refer) Unable to find definition 'cards.0.pcm.surround71.0:CARD=0'
+ALSA lib conf.c:5180:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5703:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM surround71
+ALSA lib confmisc.c:1369:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5180:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5703:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM iec958
+ALSA lib confmisc.c:1369:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5180:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5703:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib confmisc.c:1369:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5180:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5703:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pcm_oss.c:397:(_snd_pcm_oss_open) Cannot open device /dev/dsp
+ALSA lib pulse.c:242:(pulse_connect) PulseAudio: Unable to connect: Connection refused
+
+ALSA lib pulse.c:242:(pulse_connect) PulseAudio: Unable to connect: Connection refused
+
+ALSA lib pcm_a52.c:1001:(_snd_pcm_a52_open) a52 is only for playback
+ALSA lib confmisc.c:1369:(snd_func_refer) Unable to find definition 'cards.0.pcm.iec958.0:CARD=0,AES0=6,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:5180:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5703:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2666:(snd_pcm_open_noupdate) Unknown PCM iec958:{AES0 0x6 AES1 0x82 AES2 0x0 AES3 0x2 CARD 0}
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib confmisc.c:160:(snd_config_get_card) Invalid field card
+ALSA lib pcm_usb_stream.c:482:(_snd_pcm_usb_stream_open) Invalid card 'card'
+ALSA lib pcm_asym.c:105:(_snd_pcm_asym_open) capture slave is not defined
+ALSA lib pcm_dmix.c:999:(snd_pcm_dmix_open) unable to open slave
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server request channel
+jack server is not running or cannot be started
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+JackShmReadWritePtr::~JackShmReadWritePtr - Init not done for -1, skipping unlock
+Options Menu:
+1: Set Brightness
+2: Select Audio Input Device
+3: Set Animation Parameters
+0: Back to Main Menu
+Enter your choice: Available Audio Input Devices:
+0: Sound Blaster Play! 3: USB Audio (hw:2,0) - Max Input Channels: 2
+Enter the device index to use for audio input: 2024-10-20 22:12:49,371 - SK6812Menu - INFO - Audio input device set to: Sound Blaster Play! 3: USB Audio (hw:2,0)
+Audio input device set to: Sound Blaster Play! 3: USB Audio (hw:2,0)
+Options Menu:
+1: Set Brightness
+2: Select Audio Input Device
+3: Set Animation Parameters
+0: Back to Main Menu
+Enter your choice: Select an animation:
+1: Run Rainbow Animation
+10: Run Meteor Animation
+11: Run Larson Scanner Animation
+12: Run Comet Animation
+13: Run Bouncing Balls Animation
+14: Run Soft White Pulse Animation
+15: Run Warm White Fade Animation
+16: Run Rainbow With White Flash Animation
+17: Run Cool White Twinkle Animation
+18: Run White Comet Animation
+19: Run Aurora Borealis Animation
+2: Run Blink Animation
+20: Run Fireplace Animation
+21: Run Comet Rain Animation
+22: Run Lightning Storm Animation
+23: Run Pixel Explosion Animation
+24: Run Strobe Effect
+25: Run Holiday Twinkle Animation
+26: Run Lava Explosion Animation
+29: Run Random Sparkles Animation
+3: Run Fade Animation
+30: Run Random Meteor Shower Animation
+32: Run Random White Strobes Animation
+33: Run Random Color Shifts Animation
+34: Run Random Walk Animation
+35: Run Random Glitter Animation
+4: Run Color Wipe Animation
+5: Run Theater Chase Animation
+50: Run Music Synchronized Wave
+6: Run Pulse Animation
+7: Run Twinkle Animation
+8: Run Wave Animation
+9: Run Firework Animation
+0: Exit
+Enter your choice: Select an animation:
+1: Run Rainbow Animation
+10: Run Meteor Animation
+11: Run Larson Scanner Animation
+12: Run Comet Animation
+13: Run Bouncing Balls Animation
+14: Run Soft White Pulse Animation
+15: Run Warm White Fade Animation
+16: Run Rainbow With White Flash Animation
+17: Run Cool White Twinkle Animation
+18: Run White Comet Animation
+19: Run Aurora Borealis Animation
+2: Run Blink Animation
+20: Run Fireplace Animation
+21: Run Comet Rain Animation
+22: Run Lightning Storm Animation
+23: Run Pixel Explosion Animation
+24: Run Strobe Effect
+25: Run Holiday Twinkle Animation
+26: Run Lava Explosion Animation
+29: Run Random Sparkles Animation
+3: Run Fade Animation
+30: Run Random Meteor Shower Animation
+32: Run Random White Strobes Animation
+33: Run Random Color Shifts Animation
+34: Run Random Walk Animation
+35: Run Random Glitter Animation
+4: Run Color Wipe Animation
+5: Run Theater Chase Animation
+50: Run Music Synchronized Wave
+6: Run Pulse Animation
+7: Run Twinkle Animation
+8: Run Wave Animation
+9: Run Firework Animation
+0: Exit
+Enter your choice: 2024-10-20 22:13:06,833 - SK6812Main - INFO - Exiting program

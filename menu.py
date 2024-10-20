@@ -10,7 +10,6 @@ logger = logging.getLogger("SK6812Menu")
 settings = SettingsManager.get_instance()
 
 def options_menu(strip):
-    global selected_audio_device
     try:
         p = pyaudio.PyAudio()
         while True:
@@ -44,13 +43,13 @@ def options_menu(strip):
                 for i in range(p.get_device_count()):
                     device_info = p.get_device_info_by_index(i)
                     if device_info["maxInputChannels"] > 0:
-                        print(f"{i}: {device_info['name']}")
+                        print(f"{i}: {device_info['name']} - Max Input Channels: {device_info['maxInputChannels']}")
                 try:
                     device_index = int(input("Enter the device index to use for audio input: "))
                     if 0 <= device_index < p.get_device_count():
                         selected_device = p.get_device_info_by_index(device_index)
                         if selected_device["maxInputChannels"] > 0:
-                            selected_audio_device = selected_device
+                            settings.selected_audio_device = selected_device
                             logger.info(f"Audio input device set to: {selected_device['name']}")
                             print(f"Audio input device set to: {selected_device['name']}")
                         else:
@@ -61,6 +60,7 @@ def options_menu(strip):
                     print("Invalid input. Please enter a valid device index.")
             elif choice == "3":
                 # Animation Parameter Menü
+                animation_settings = settings.animation_settings
                 print("Animation Parameter Settings:")
                 print(f"1: Speed (current: {animation_settings.speed})")
                 print(f"2: Meteor Size (current: {animation_settings.meteor_size})")

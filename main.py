@@ -9,6 +9,7 @@ from animations import *
 from menu import options_menu
 from utils import *
 from settings import SettingsManager
+import pyaudio
 
 # Set up logging
 logger = setup_logging("SK6812Main")
@@ -81,15 +82,21 @@ def handle_user_choice(choice, animation_future):
         animation_args = [strip, stop_event]
         animation_kwargs = {}
 
+        # Wenn die Musik-synchronisierte Animation gewählt wurde, stelle sicher, dass ein Audio-Eingabegerät ausgewählt ist
         if choice == "50":  # Musik-synchronisierte Animation
             if settings.selected_audio_device is None:
-                print("No audio device selected. Please choose an audio input device from the options menu.")
-                return animation_future
+                p = pyaudio.PyAudio()
+                if p.get_device_count() == 0:
+                    print("No audio devices available.")
+                    return animation_future
+                else:    
+                    settings.selected_audio_device = p.get_device_info_by_index(0)
+                    print("Default device selected. Choose another audio input device from the options menu.")
+                
             animation_args.append(settings.selected_audio_device)
 
-        # Prüfen, ob die Animation zusätzliche Einstellungen akzeptiert
-        if hasattr(animation_function, 'accept_kwargs') and animation_function.accept_kwargs:
-            animation_kwargs = settings.animation_settings.to_kwargs()
+        # Verwende die allgemeinen Animationseinstellungen für alle Animationen
+        animation_kwargs = settings.animation_settings.to_kwargs()
 
         return executor.submit(animation_function, *animation_args, **animation_kwargs)
     elif choice.lower() == "o":
