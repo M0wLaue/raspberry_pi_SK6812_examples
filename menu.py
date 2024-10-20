@@ -2,10 +2,12 @@
 import logging
 import pyaudio
 from rpi_ws281x import Color
+from settings import SettingsManager
 
 logger = logging.getLogger("SK6812Menu")
 
-selected_audio_device = None  # Globale Variable zum Speichern des ausgewählten Aufnahmegeräts
+# Lade die zentrale Einstellungsinstanz
+settings = SettingsManager.get_instance()
 
 def options_menu(strip):
     global selected_audio_device
@@ -14,7 +16,11 @@ def options_menu(strip):
         while True:
             print("Options Menu:")
             print("1: Set Brightness")
-            print("2: Select Audio Input Device")
+            if p.get_device_count() > 0:
+                print("2: Select Audio Input Device")
+            else:
+                print("2: No Audio Devices Available")
+            print("3: Set Animation Parameters")
             print("0: Back to Main Menu")
 
             choice = input("Enter your choice: ")
@@ -31,6 +37,9 @@ def options_menu(strip):
                 except ValueError:
                     print("Invalid input. Please enter a number between 0 and 255.")
             elif choice == "2":
+                if p.get_device_count() == 0:
+                    print("No audio devices available.")
+                    continue
                 print("Available Audio Input Devices:")
                 for i in range(p.get_device_count()):
                     device_info = p.get_device_info_by_index(i)
@@ -50,6 +59,31 @@ def options_menu(strip):
                         print("Invalid device index.")
                 except ValueError:
                     print("Invalid input. Please enter a valid device index.")
+            elif choice == "3":
+                # Animation Parameter Menü
+                print("Animation Parameter Settings:")
+                print(f"1: Speed (current: {animation_settings.speed})")
+                print(f"2: Meteor Size (current: {animation_settings.meteor_size})")
+                print(f"3: Decay (current: {animation_settings.decay})")
+                print(f"4: Tail Length (current: {animation_settings.tail_length})")
+                print(f"5: Glitter Probability (current: {animation_settings.glitter_probability})")
+                # ... füge weitere Parameter hinzu
+                param_choice = input("Enter the parameter to change: ")
+
+                try:
+                    if param_choice == "1":
+                        animation_settings.speed = int(input("Enter new speed: "))
+                    elif param_choice == "2":
+                        animation_settings.meteor_size = int(input("Enter new meteor size: "))
+                    elif param_choice == "3":
+                        animation_settings.decay = float(input("Enter new decay (0.0 - 1.0): "))
+                    elif param_choice == "4":
+                        animation_settings.tail_length = int(input("Enter new tail length: "))
+                    elif param_choice == "5":
+                        animation_settings.glitter_probability = float(input("Enter new glitter probability (0.0 - 1.0): "))
+                    # ... weitere Abfragen für andere Parameter
+                except ValueError:
+                    print("Invalid input. Please enter the correct value type.")
             elif choice == "0":
                 break
             else:

@@ -6,33 +6,20 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from rpi_ws281x import *
 from animations import *
-from menu import options_menu, selected_audio_device
+from menu import options_menu
 from utils import *
+from settings import SettingsManager
 
 # Set up logging
 logger = setup_logging("SK6812Main")
 
-@dataclass
-class LEDConfig:
-    count: int
-    pin: int
-    freq_hz: int = 800000
-    dma: int = 10
-    invert: bool = False
-    brightness: int = 255
-    channel: int = 0
-    strip_type: str = "WS2811_STRIP_GRB"
+# Lade die zentrale Einstellungsinstanz
+settings = SettingsManager.get_instance()
 
-# Load configuration from YAML file
-config_data = load_config("config.yaml")
-
-# Map string strip type to corresponding constant value
-config_data["strip_type"] = map_strip_type(config_data["strip_type"], ws.WS2811_STRIP_GRB)
-config = LEDConfig(**config_data)
-
-# Create NeoPixel object with appropriate configuration
+# Erstelle NeoPixel Objekt mit den geladenen LED-Einstellungen
+led_config = settings.led_config
 strip = Adafruit_NeoPixel(
-    config.count, config.pin, config.freq_hz, config.dma, config.invert, config.brightness, config.channel, config.strip_type
+    led_config.count, led_config.pin, led_config.freq_hz, led_config.dma, led_config.invert, led_config.brightness, led_config.channel, led_config.strip_type
 )
 strip.begin()
 
@@ -90,13 +77,21 @@ def handle_user_choice(choice, animation_future):
             animation_future.result()  # Wait for the current animation to stop
 
         stop_event.clear()
+        animation_function = animations[choice]
+        animation_args = [strip, stop_event]
+        animation_kwargs = {}
+
         if choice == "50":  # Musik-synchronisierte Animation
-            if selected_audio_device is None:
+            if settings.selected_audio_device is None:
                 print("No audio device selected. Please choose an audio input device from the options menu.")
                 return animation_future
-            return executor.submit(animations[choice], strip, stop_event, selected_audio_device)
-        else:
-            return executor.submit(animations[choice], strip, stop_event)
+            animation_args.append(settings.selected_audio_device)
+
+        # Prüfen, ob die Animation zusätzliche Einstellungen akzeptiert
+        if hasattr(animation_function, 'accept_kwargs') and animation_function.accept_kwargs:
+            animation_kwargs = settings.animation_settings.to_kwargs()
+
+        return executor.submit(animation_function, *animation_args, **animation_kwargs)
     elif choice.lower() == "o":
         options_menu(strip)  # Optionen-Menü aufrufen
     elif choice == "0":
