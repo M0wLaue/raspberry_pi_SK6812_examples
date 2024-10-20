@@ -1,25 +1,25 @@
 # raspberry_pi_SK6812_examples
 
-Da wir PWM verwenden muss auch noch das Soundmodule der ARM CPU deaktiviert werden. Andernfalls könnte es zu Störungen kommen:
+PWM wird verwendet -> Soundmodule der ARM CPU deaktivieren, sonst gibts Störungen:
 sudo nano /boot/config.txt
+`dtparam=audio=on` -> `#dtparam=audio=on`
 
-und dort am Ende der Datei
-dtparam=audio=on
-
-auskommentieren:
-#dtparam=audio=on
-
-Dann noch das nachträgliche Laden des Modules unterbinden:
+Laden des Modules unterbinden:
 sudo nano /etc/modprobe.d/snd-blacklist.conf
++ `blacklist snd_bcm2835`
 
-und
-blacklist snd_bcm2835
+Nach Systemneustart mit `lsmod` prüfen. -> Das Modul `snd_bcm2835` sollte nicht geladen sein.
 
-einfügen.
+laden
+`git clone https://github.com/M0wLaue/raspberry_pi_SK6812_examples`
 
-Nach einen Systemneustart kann mit dem Befehl:
-lsmod
-
-nachgeschaut werden ob das  “snd_bcm2835” Module nicht mehr geladen ist. Es sollte in der Auflistung nicht mehr auftauchen.
-
+dependencies
+`pip3 install -r requirements.txt`
+auf dem pi entweder mit apt installieren oder einfach hardcore über den superschönen Parameter `--break-system-packages`
+Hier als Beispiel:
+`sudo apt install python3-rpi_ws281x`
+oder alternativ
 `sudo pip3 install rpi_ws281x --break-system-packages`
+
+start
+`python3 main.py`
