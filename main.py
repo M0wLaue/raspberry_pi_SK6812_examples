@@ -63,6 +63,9 @@ animations = {
     "35": run_random_glitter_animation,
     # music sync
     "50": run_music_synchronized_wave,
+    "51": run_frequency_bands_gradient,
+    "52": run_beat_pulse_animation,
+    "53": run_wave_ripple_effect,
 }
 
 def display_menu():
@@ -83,7 +86,7 @@ def handle_user_choice(choice, animation_future):
         animation_kwargs = {}
 
         # Wenn die Musik-synchronisierte Animation gewählt wurde, stelle sicher, dass ein Audio-Eingabegerät ausgewählt ist
-        if choice == "50":  # Musik-synchronisierte Animation
+        if int(choice) >= 50:  # Musik-synchronisierte Animation
             if settings.selected_audio_device is None:
                 p = pyaudio.PyAudio()
                 if p.get_device_count() == 0:
